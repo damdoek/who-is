@@ -1,0 +1,17 @@
+{
+  "name": "who-is",
+  "version": "1.0.0",
+  "description": "whois for node",
+  "scripts": {
+    "build": "rm -f ./package-lock.json ; rm -rf ./node_modules ; npm i",
+    "test": "node sample.js"
+  },
+  "author": "Y.F",
+  "license": "MIT",
+  "keywords": [
+    "whois"
+  ],
+  "dependencies": {
+    "punycode": "^2.1.1"
+  }
+}
