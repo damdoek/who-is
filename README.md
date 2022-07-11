@@ -26,7 +26,8 @@ whois for node
     lookupTimeOut: timeout between each  recursive call, default 0
     socketTimeOut: timeout of the lookup socket, default 0
 }	
-```|
+``` 
+|
 
 ## loookup method
 
@@ -39,5 +40,6 @@ whois for node
         port: default 43,
         query: whois query,  default generated based on server
     }	
-``` |
+``` 
+|
 | rec | **Number**, max number of recursive call to  execute based on the referal whois server, default initial setup value}` |
