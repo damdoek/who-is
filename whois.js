@@ -10,7 +10,7 @@ class Whois {
     socketTimeOut
     results
     constructor(target, options = {}) {
-        this.recursiveLookup = 2
+        this.recursiveLookup = 1
         this.lookupTimeOut = 500
         this.socketTimeOut = 0
         this.results = []
