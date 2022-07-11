@@ -15,7 +15,7 @@ whois for node
 ```
 # Parameters
 
-## whois class
+## whois class constructor
 
 
 <table>
