@@ -25,14 +25,14 @@ whois for node
 <tr>
 <td> target </td>
 <td>
- **String**, target's url of the whois lookup 
+<b>String</b>, target's url of the whois lookup 
 </td>
 <tr>
 <td> options </td>
 <td>
-  **Object**,
+ <b>Object</b>,
 
-```json
+```
 {
     recursiveLookup: max number of recursive call to  execute based on the referal whois server, default 1
     lookupTimeOut: timeout between each  recursive call, default 0
@@ -41,20 +41,33 @@ whois for node
 ``` 
 </td>
 </tr>
+</table>
 
 
 ## loookup method
 
-| params | Description |
-| ----------- | ----------- |
-| server | **Object**, 
 
-```json
+<table>
+<tr>
+<td> params </td> <td> Description </td>
+</tr>
+<tr>
+<td> server </td>
+<td>
+ <b>Object</b> 
+
+```
     {   
         host: whois server to  query, default calculated based on target
         port: default 43,
         query: whois query,  default generated based on server
     }	
 ``` 
-|
-| rec | **Number**, max number of recursive call to  execute based on the referal whois server, default initial setup value}` |
+</td>
+<tr>
+<td> rec </td>
+<td>
+<b>Number</b> , max number of recursive call to  execute based on the referal whois server, default initial setup value 
+</td>
+</tr>
+</table>
