@@ -569,6 +569,10 @@
   "jo": null,
   "jp": {
     "host": "whois.jprs.jp",
+    "query": " $addr/e\r\n"
+  },
+  "co.jp": {
+    "host": "whois.jprs.jp",
     "query": "$addr/e\r\n"
   },
   "ke": "whois.kenic.or.ke",

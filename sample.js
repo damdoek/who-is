@@ -1,6 +1,6 @@
 var Whois = require('./whois')
 
-var traget = 'paypaymalljp.co'
+var traget = 'google.com'
 
 var whois = new Whois(traget)
 

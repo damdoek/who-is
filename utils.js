@@ -12,9 +12,11 @@ exports.getServer = (addr) => {
     }
     else {
         let tld = punycode.toASCII(addr)
-        while (!server || tld.length > 0) {
+        while (!server && tld.length > 0) {
+
             server = serverList[tld];
             tld = tld.replace(/^.+?(\.|$)/, '');
+
         }
         if (!server)
             return Error('E01: no server found !')
@@ -25,7 +27,7 @@ exports.getServer = (addr) => {
     return { ...server, port: 43 }
 }
 
-exports.domainFormatting = (string) => {
+exports.domainFormatting2 = (string) => {
     return string.replace(/^[:\s]+/, '').replace(/^https?[:\/]+/, '').replace(/(\/|:).+/, '') || string;
 };
 
@@ -40,4 +42,16 @@ exports.toJson = (string) => {
         }
     })
     return json
+}
+
+exports.domainFormatting = (url) => {
+    var result
+    var match
+    if (match = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/im)) {
+        result = match[1]
+        if (match = result.match(/^[^\.]+\.(.+\..+)$/)) {
+            result = match[1]
+        }
+    }
+    return result
 }

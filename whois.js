@@ -1,4 +1,5 @@
 const net = require('net')
+const punycode = require('punycode/')
 var { getServer, domainFormatting, toJson } = require('./utils')
 
 class Whois {
@@ -18,7 +19,7 @@ class Whois {
     }
 
     set(target, options) {
-        this.target = target
+        this.target = domainFormatting(target)
         if (options) {
             if (options.host)
                 this._server = {
@@ -27,7 +28,7 @@ class Whois {
                     query: '$addr\r\n'
                 }
             else
-                this._server = getServer(domainFormatting(target))
+                this._server = getServer(target)
 
             if (
                 options.port
@@ -85,22 +86,23 @@ class Whois {
             return cb(null, err)
         })
         this._net.on('close', (err) => {
-            let jsonData = toJson(data)
+            let jsonData = (data)
             this.results.push(jsonData)
 
             let keys = ["ReferralServer", "Registrar_Whois", "Whois_Server", "WHOIS_Server", "Registrar_WHOIS_Server"]
             let index = 0
-            while (Object.keys(jsonData).indexOf(keys[index]) < 0) {
+            while (Object.keys(jsonData).indexOf(keys[index]) < 0 && index < keys.length) {
                 index++
             }
             if (index < keys.length && server.host != jsonData[keys[index]]) {
-                server.host = "whois.west.cn"
+                server.host = jsonData[keys[index]]
                 --rec;
             }
             else return cb(this.results)
             this.lookup(server, rec, cb)
         })
-        this._net.write(this._server.query.replace('$addr', this.target))
+        let query = this._server.query.replace('$addr', punycode.toASCII(this.target))
+        this._net.write(query)
     }
 
     getResult(mode = 0) {
