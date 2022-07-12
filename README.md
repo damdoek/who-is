@@ -34,7 +34,7 @@ whois for node
 
 ```
 {
-    recursiveLookup: max number of recursive call to  execute based on the referal whois server, default 1
+    recursiveLookup: max number of recursive call to  execute based on the referal whois server, default 1 // (beta: change of this value is yet not effective)
     lookupTimeOut: timeout between each  recursive call, default 0
     socketTimeOut: timeout of the lookup socket, default 0
 }	
